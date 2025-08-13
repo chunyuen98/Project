@@ -5,13 +5,13 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Login Page",
-            "file": "${workspaceFolder}/Login/login.html"
+            "file": "${workspaceFolder}/index.html"
         },
         {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Signup Page",
-            "file": "${workspaceFolder}/Login/signup.html"
+            "file": "${workspaceFolder}/index.html"
         }
     ]
 }
