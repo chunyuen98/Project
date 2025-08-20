@@ -38,7 +38,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
             const user = userCredential.user;
             console.log("Logged in as:", user.email);
             alert("Login successful!");
-            window.location.href = "../Home/home.html"; // Redirect to home page
+            window.location.href = "../Home/dashboard.html"; // Redirect to home page
         })
         .catch((error) => {
             // Show error message

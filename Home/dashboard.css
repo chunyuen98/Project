@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d60000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.user-menu button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.user-menu button:hover {
+    background-color: #444;
+}
+
+/* Hero sections */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
+.hero img {
+    max-width: 600px;
+    height: auto;
+    margin-top: 20px;
+}
