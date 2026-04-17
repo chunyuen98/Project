@@ -24,13 +24,17 @@ document.getElementById("togglePassword").addEventListener("click", function () 
 });
 
 function showError(msg) {
-    const box = document.getElementById("errorMsg");
-    document.getElementById("errorText").textContent = msg;
+    const box  = document.getElementById("errorMsg");
+    const text = document.getElementById("errorText");
+    if (!box || !text) return;
+    text.textContent = msg;
     box.classList.remove("hidden");
 }
 
 function hideError() {
-    document.getElementById("errorMsg").classList.add("hidden");
+    const box = document.getElementById("errorMsg");
+    if (!box) return;
+    box.classList.add("hidden");
 }
 
 function setLoading(on) {
