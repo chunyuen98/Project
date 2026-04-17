@@ -3,24 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
+    <title>ShopEasy - Create Account</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="login-container">
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="email" id="signupEmail" placeholder="Email" required>
-            <input type="password" id="signupPassword" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Login</a></p>
-        <p id="signup-error" style="color:red; text-align:center;"></p>
-        <p id="signup-success" style="color:green; text-align:center;"></p>
+    <!-- Left: Brand Panel -->
+    <div class="brand-panel">
+        <div class="brand-logo">Shop<span>Easy</span></div>
+        <p class="brand-tagline">Join thousands of happy shoppers</p>
+
+        <div class="brand-icon">
+            <i class="fas fa-user-plus"></i>
+        </div>
+
+        <ul class="brand-features">
+            <li><i class="fas fa-gift"></i> Welcome discount on your first order</li>
+            <li><i class="fas fa-bell"></i> Exclusive member-only deals</li>
+            <li><i class="fas fa-history"></i> Easy order tracking</li>
+            <li><i class="fas fa-heart"></i> Save your favourite items</li>
+        </ul>
     </div>
 
-    <!-- Firebase SDK & App Logic -->
+    <!-- Right: Form Panel -->
+    <div class="form-panel">
+        <div class="form-box">
+            <h2>Create account</h2>
+            <p class="subtitle">Join ShopEasy — it's completely free</p>
+
+            <div class="msg hidden" id="errorMsg">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <div class="msg hidden" id="successMsg">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText"></span>
+            </div>
+
+            <form id="signupForm" novalidate>
+                <div class="input-group">
+                    <label for="signupEmail">Email Address</label>
+                    <div class="input-wrapper has-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="signupEmail" placeholder="you@example.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="signupPassword">Password</label>
+                    <div class="input-wrapper has-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="signupPassword" placeholder="At least 6 characters" required autocomplete="new-password">
+                        <i class="fas fa-eye toggle-password" id="togglePassword" title="Show/hide password"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="signupBtn">
+                    <div class="spinner"></div>
+                    <span class="btn-text">Create Account</span>
+                </button>
+            </form>
+
+            <div class="divider">or</div>
+
+            <p class="form-footer">
+                Already have an account? <a href="login.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+
     <script type="module" src="signupApp.js"></script>
 </body>
 </html>

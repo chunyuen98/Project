@@ -3,47 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>ShopEasy - Home</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">COMPANY</div>
-            <ul class="nav-links">
-                <li>Title1</li>
-                <li>Title2</li>
-                <li>Title3</li>
-                <li>Title4</li>
-                <li>Title5</li>
-                <li>Title6</li>
-                <li>Title7</li>
-                <li>Title8</li>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Shop<span>Easy</span></div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search products..." id="searchInput">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.html" class="active">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <span class="hero-badge">New Arrivals 2024</span>
+            <h1>Discover Amazing Products at Unbeatable Prices</h1>
+            <p>Shop the latest trends in electronics, fashion, and more — delivered to your door.</p>
+            <div class="hero-btns">
+                <a href="product.html" class="btn-primary">Shop Now</a>
+                <a href="#deals" class="btn-secondary">View Deals</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-circle"><i class="fas fa-shopping-bag"></i></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat"><i class="fas fa-shipping-fast"></i> Free Shipping over $50</div>
+        <div class="stat"><i class="fas fa-undo"></i> 30-Day Returns</div>
+        <div class="stat"><i class="fas fa-shield-alt"></i> Secure Payment</div>
+        <div class="stat"><i class="fas fa-headset"></i> 24/7 Support</div>
+    </div>
+
+    <!-- Categories -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <a href="product.html" class="see-all">See All &rarr;</a>
+        </div>
+        <div class="categories-grid">
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-laptop"></i></div>
+                <span>Electronics</span>
+                <small>120+ items</small>
+            </a>
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-tshirt"></i></div>
+                <span>Fashion</span>
+                <small>340+ items</small>
+            </a>
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-home"></i></div>
+                <span>Home &amp; Garden</span>
+                <small>200+ items</small>
+            </a>
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-dumbbell"></i></div>
+                <span>Sports</span>
+                <small>80+ items</small>
+            </a>
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-book"></i></div>
+                <span>Books</span>
+                <small>500+ items</small>
+            </a>
+            <a href="product.html" class="category-card">
+                <div class="cat-icon"><i class="fas fa-gamepad"></i></div>
+                <span>Toys &amp; Games</span>
+                <small>150+ items</small>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section bg-light">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <a href="product.html" class="see-all">See All &rarr;</a>
+        </div>
+        <div class="product-grid" id="featuredProducts"></div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner" id="deals">
+        <div class="promo-content">
+            <span class="promo-tag">Limited Time Offer</span>
+            <h2>Summer Sale &mdash; Up to 50% Off</h2>
+            <p>Don't miss out on our biggest sale of the year. Shop now before stocks run out!</p>
+            <a href="product.html" class="btn-white">Shop the Sale</a>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="section">
+        <div class="section-header">
+            <h2>New Arrivals</h2>
+            <a href="product.html" class="see-all">See All &rarr;</a>
+        </div>
+        <div class="product-grid" id="newArrivals"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <div class="logo footer-logo">Shop<span>Easy</span></div>
+            <p>Your one-stop shop for everything you need, delivered fast and safely.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">About Us</a></li>
             </ul>
-            <div class="user-menu">
-                <button id="logoutBtn">Logout</button>
+        </div>
+        <div class="footer-col">
+            <h4>Customer Service</h4>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Subscribe for deals and updates.</p>
+            <div class="newsletter">
+                <input type="email" placeholder="Your email">
+                <button>Subscribe</button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </div>
+</footer>
 
-    <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Item1</h1>
-                <p>Desc1</p>
-            </div>
-            <img src="" alt="Pic1">
-        </section>
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i> Added to cart!
+</div>
 
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Item1</h1>
-                <p>Desc2</p>
-            </div>
-            <img src="" alt="Pic2">
-        </section>
-    </main>
-
-    <script type="module" src="dashboard.js"></script>
+<script type="module" src="dashboard.js"></script>
 </body>
 </html>

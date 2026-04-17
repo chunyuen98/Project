@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Products</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Shop<span>Easy</span></div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search products..." id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="product.html" class="active">Products</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="products-layout">
+
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <h3><i class="fas fa-filter"></i> Filters</h3>
+
+            <div class="filter-group">
+                <h4>Category</h4>
+                <label><input type="checkbox" value="Electronics" onchange="applyFilters()"> Electronics</label>
+                <label><input type="checkbox" value="Fashion" onchange="applyFilters()"> Fashion</label>
+                <label><input type="checkbox" value="Sports" onchange="applyFilters()"> Sports</label>
+                <label><input type="checkbox" value="Home" onchange="applyFilters()"> Home &amp; Garden</label>
+                <label><input type="checkbox" value="Books" onchange="applyFilters()"> Books</label>
+                <label><input type="checkbox" value="Toys & Games" onchange="applyFilters()"> Toys &amp; Games</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Max Price</h4>
+                <input type="range" id="priceRange" min="0" max="300" value="300" oninput="updatePriceLabel(this.value); applyFilters()">
+                <div class="price-label">Up to: <span id="priceLabel">$300</span></div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Rating</h4>
+                <label><input type="radio" name="rating" value="4" onchange="applyFilters()"> 4★ &amp; above</label>
+                <label><input type="radio" name="rating" value="3" onchange="applyFilters()"> 3★ &amp; above</label>
+                <label><input type="radio" name="rating" value="0" checked onchange="applyFilters()"> All Ratings</label>
+            </div>
+
+            <button class="btn-clear-filters" onclick="clearFilters()">Clear All Filters</button>
+        </aside>
+
+        <!-- Product Area -->
+        <div class="product-area">
+            <div class="product-area-header">
+                <h2>All Products <span id="productCount"></span></h2>
+                <select id="sortSelect" onchange="applyFilters()">
+                    <option value="default">Sort: Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </div>
+</main>
+
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i> Added to cart!
+</div>
+
+<script type="module" src="product.js"></script>
+</body>
+</html>

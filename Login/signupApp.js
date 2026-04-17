@@ -1,9 +1,6 @@
-// Import Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-// Firebase config (your provided credentials)
 const firebaseConfig = {
     apiKey: "AIzaSyC-ChjVrVGSPC5O9c6N_SviSJOj9QIQLoc",
     authDomain: "project-b06e7.firebaseapp.com",
@@ -14,54 +11,73 @@ const firebaseConfig = {
     measurementId: "G-ZEJNTFRS7X"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-// Handle Sign Up Form Submission
-document.getElementById("signupForm").addEventListener("submit", function (e) {
+// Toggle password visibility
+document.getElementById("togglePassword").addEventListener("click", function () {
+    const pwd = document.getElementById("signupPassword");
+    const isHidden = pwd.type === "password";
+    pwd.type = isHidden ? "text" : "password";
+    this.classList.toggle("fa-eye", !isHidden);
+    this.classList.toggle("fa-eye-slash", isHidden);
+});
+
+function showError(msg) {
+    const box = document.getElementById("errorMsg");
+    document.getElementById("errorText").textContent = msg;
+    box.classList.remove("hidden");
+    document.getElementById("successMsg").classList.add("hidden");
+}
+
+function showSuccess(msg) {
+    const box = document.getElementById("successMsg");
+    document.getElementById("successText").textContent = msg;
+    box.classList.remove("hidden");
+    document.getElementById("errorMsg").classList.add("hidden");
+}
+
+function hideMessages() {
+    document.getElementById("errorMsg").classList.add("hidden");
+    document.getElementById("successMsg").classList.add("hidden");
+}
+
+function setLoading(on) {
+    const btn = document.getElementById("signupBtn");
+    btn.disabled = on;
+    btn.classList.toggle("loading", on);
+    btn.querySelector(".btn-text").textContent = on ? "Creating account…" : "Create Account";
+}
+
+const ERRORS = {
+    "auth/email-already-in-use": "This email is already registered.",
+    "auth/invalid-email":        "Invalid email format.",
+    "auth/weak-password":        "Password must be at least 6 characters.",
+};
+
+document.getElementById("signupForm").addEventListener("submit", (e) => {
     e.preventDefault();
+    hideMessages();
 
-    // Get input values
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value.trim();
-    const errorMessage = document.getElementById("signup-error");
-    const successMessage = document.getElementById("signup-success");
+    const email    = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
 
-    // Clear previous messages
-    errorMessage.textContent = "";
-    successMessage.textContent = "";
-
-    // Basic password validation
     if (password.length < 6) {
-        errorMessage.textContent = "Password must be at least 6 characters.";
+        showError("Password must be at least 6 characters.");
         return;
     }
 
-    // Firebase Auth Signup
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // User created successfully
-            const user = userCredential.user;
-            console.log("Account created for:", user.email);
+    setLoading(true);
 
-            successMessage.textContent = "Account created successfully! Redirecting to login...";
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            showSuccess("Account created! Redirecting to sign in…");
             setTimeout(() => {
-                window.location.href = "login.html"; // Redirect to login page
+                window.location.href = "login.html";
             }, 2000);
         })
-        .catch((error) => {
-            // Handle errors
-            console.error("Signup Error:", error);
-            if (error.code === "auth/email-already-in-use") {
-                errorMessage.textContent = "This email is already registered.";
-            } else if (error.code === "auth/invalid-email") {
-                errorMessage.textContent = "Invalid email format.";
-            } else if (error.code === "auth/weak-password") {
-                errorMessage.textContent = "Password is too weak.";
-            } else {
-                errorMessage.textContent = error.message;
-            }
+        .catch((err) => {
+            setLoading(false);
+            showError(ERRORS[err.code] || "Something went wrong. Please try again.");
         });
 });
