@@ -68,6 +68,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
         })
         .catch((err) => {
             setLoading(false);
-            showError(ERRORS[err.code] || "Something went wrong. Please try again.");
+            console.error("Login error code:", err.code);
+            showError(ERRORS[err.code] || `Something went wrong. (${err.code})`);
         });
 });
